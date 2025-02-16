@@ -1,17 +1,17 @@
 package cardGame;
 
-public class Cards {
+public class Cards { // This is the Cards class.  
 	String name;
 	String suit;
 	int value;
 	
-	Cards(String name, String suit, int value) {
+	Cards(String name, String suit, int value) { // This is the Cards constructor.
 		this.name = name;
 		this.suit = suit;
 		this.value = value;
 	}
 
-	public String getName() {
+	public String getName() { // Getters and Setters for the Cards class
 		return name;
 	}
 
@@ -35,8 +35,8 @@ public class Cards {
 		this.value = value;
 	}
 	
-	public void describe() {
+	public void describe() { 
 		System.out.println(this.name + " of " + this.suit + " -- " + this.value);
-	}
+	} // Describe
 	
 } //class

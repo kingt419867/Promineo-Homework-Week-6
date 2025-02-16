@@ -1,7 +1,7 @@
 package cardGame;
 import java.util.*;
 
-public class Deck {
+public class Deck { 							// This is the Deck class
 	List<Cards> cards = new ArrayList<Cards>();
 	
 	Deck() { // This is the Deck constructor.
@@ -18,7 +18,7 @@ public class Deck {
 		} // for suit
 	} // deck
 
-	public List<Cards> getCards() {
+	public List<Cards> getCards() { // Getters and Setters
 		return cards;
 	}
 
@@ -26,18 +26,18 @@ public class Deck {
 		this.cards = cards;
 	}
 	
-	public void describe() {
+	public void describe() {			// This is the Describe method.
 		for (Cards card : this.cards) {
 			card.describe();
 		}
-	}
+	} // Describe
 	
-	public void shuffle() {
+	public void shuffle() { // This is the Shuffle method.
 		Collections.shuffle(this.cards);
-	}
+	} // Shuffle
 	
-	public Cards draw() {
+	public Cards draw() {   // This is the Draw method.
 		Cards card = this.cards.remove(0);
 		return card;
-	}
-}
+	} // Draw
+} // Class

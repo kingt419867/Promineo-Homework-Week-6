@@ -3,7 +3,7 @@ package cardGame;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Player {
+public class Player {						// This is the Player class
 
 	String playerName;
 	int score;
@@ -12,22 +12,14 @@ public class Player {
 	Player(String name) { // This is the Player constructor.
 		this.playerName = name;
 		this.score = 0;
-		for (int i = 0; i <= 26; i++) {
-			hand.add(Deck.draw()); // Depending on which player, this gives half the deck to them, as a Hand.
-		} // for
 	} // Constructor
 	
-	public Cards flip() {
+	public Cards flip() { // This is the flip method
 		Cards hand = this.hand.remove(0);
 		return hand;
-	}
+	} // flip
 	
-//	public Cards draw() {
-//		Cards card = this.cards.remove(0);
-//		return card;
-//	}
-	
-	public String getPlayerName() {
+	public String getPlayerName() {  // Getters and Setters
 		return playerName;
 	}
 	public void setPlayerName(String playerName) {
@@ -40,9 +32,9 @@ public class Player {
 	public void setScore(int score) {
 		this.score = score;
 	}
-	public void  incrementScore() {
+	public void  incrementScore() { // This is the incrementScore method.
 		this.score = score + 1;
-	}
+	} // incrementScore
 	
 	public List<Cards> getHand() {
 		return hand;
@@ -51,7 +43,7 @@ public class Player {
 		this.hand = hand;
 	}
 	
-	public void describe() {
+	public void describe() { // This is the Describe method.
 		System.out.println("Player name: " + this.getPlayerName() + "; score: " + this.getScore());
 	} // describe
 	

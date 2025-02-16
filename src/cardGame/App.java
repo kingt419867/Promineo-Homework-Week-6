@@ -4,20 +4,54 @@ public class App {
 
 	public static void main(String[] args) {
 
-	}
+		Deck deck = new Deck(); // Instantiates the Deck class.	    
+	    //deck.describe(); // Describes the Deck, if needed.
+	    System.out.println("-----------------------------------------------------------------------");
+	    System.out.println("Welcome to the card game, War!");
+	    System.out.println("There are 2 players, Player1 and Player2.");
+	    System.out.println("The play will proceed automatically.  Suites are ignored.  Ace is high, but Jokers are played.");
+	    System.out.println("-----------------------------------------------------------------------");
+	    System.out.println();
+	    deck.shuffle(); // Shuffles the Deck.
+	    
+	    Player player1 = new Player("PlayerOne");  // Instantiates the first Player.
+	    Player player2 = new Player("PlayerTwo");  // Instantiates the 2nd Player.
+	    
+	    for (int i = 0; i <=25; i++) {			// This reveals the cards in Player1's Hand.
+	    	player1.getHand().add(deck.draw());
+	    } // Player1 Card Reveal
+	    
+	    for (int j = 0; j <=25; j++) {			// This reveals the cards in Player2's Hand.
+	    	player2.getHand().add(deck.draw());
+	    } // Player 2 Card Reveal
+	    
+	    for (int k = 0; k <=25; k++) {			// This is the battle.  It will compare the values held by Player1 vs Player2.
+	    	Cards player1Draw = player1.flip(); // Both players reveal their cards, here.
+	    	Cards player2Draw = player2.flip();
+	    	System.out.println("This is Round " + k + ". Player1 drew a " + player1Draw.getName() + ".  Player2 drew a " + player2Draw.getName() + ".");
+	    	if (player1Draw.getValue() > player2Draw.getValue()) { // This compares the players' scores and determines the winner.
+	    		player1.incrementScore();		// Player1 wins
+	    		System.out.println("Player1 wins.");
+	    	} else if (player2Draw.getValue() > player1Draw.getValue()) {
+	    		player2.incrementScore();		// Player2 wins
+	    		System.out.println("Player2 wins.");
+	    	} else {							// If the players scored the same, then it's a draw.
+	    		System.out.println("It was a tie.  No points awarded.");
+	    	}
+	    	System.out.println("The score is:  Player1: " + player1.getScore() + " Player2: " + player2.getScore());
+	    	System.out.println();
+	    } // Battle for
+	    System.out.println("-----------------------------------------------------------------------");
+	    System.out.println();							// This section is the end of game summary.
+	    if (player1.getScore() > player2.getScore()) {  // The players' final scores are compared, and the overall winner is announced.
+	    	System.out.println("Player1 wins overall.");
+	    } else if (player2.getScore() > player1.getScore()){
+	    	System.out.println("Player2 wins overall.");
+	    } else {
+	    	System.out.println("It was a tie.");
+	    }
+	    System.out.println("Player1 score: " + player1.getScore() + ".  Player2 score: " + player2.getScore()); // This prints out the players' final scores.
+	} // main
 
-}
+} // class
 
-// War rules:  There are at least a dozen different ways of playing the card game, War.  See https://en.wikipedia.org/wiki/War_(card_game)
-// Also see:  https://search.brave.com/search?q=How+many+different+ways+are+there+of+playing+the+card+game%2C+War%3B+that+is%2C+how+many+different+sets+of+rules+are+there+for+the+game%3F&source=web&summary=1&conversation=2d9cf263141c177335e1d9
-// And see:  https://search.brave.com/search?q=How+do+you+play+the+card+game+%22War%22%3F&source=web
-
-// My wife's rules, how she learned as a child, have the Joker high, and all the cards are played (some variations don't play the Joker)
-// She also plays 3 cards down for a "war," and whoever runs out of cards first, loses.
-// Thus, scoring is not by points, per se, but by how many cards you have, until eventually, one player has all of them.
-// The discard piles are recycled into new hands, when the hands are exhausted.  Reshuffling is optional.
-
-// In my MVP release, we're not going to have any "wars," at all - only "battles".
-// Discard piles will not be implemented in the MVP version; rather, discarded cards (that is, cards that have been "won") will simply be added to the bottom of the hand.
-// Scoring will be done by keeping a tally of how many cards each player has left in their hand.
-// I will keep the Ace high for the MVP version.
